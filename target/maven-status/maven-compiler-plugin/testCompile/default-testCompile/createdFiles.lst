@@ -1,0 +1,12 @@
+TestBase/BaseTest.class
+Pages/Base.class
+POMPageFactory/BasePage.class
+Pages/HomePage.class
+POMPageFactory/HomePagePF.class
+Pages/StoryPage.class
+StepDefinitions/SkyNewsHomePagePOM.class
+Pages/ClimatePage.class
+POMPageFactory/StoryPagePF.class
+Runner/TestRunner.class
+POMPageFactory/ClimatePagePF.class
+StepDefinitions/SetupAndTearDown.class
