@@ -21,6 +21,9 @@ public class SetupAndTearDown extends BaseTest{
 	}
 
 
+	/*
+	 *  Setup Method which initialise  the webdriver and open the browser passed in from the congif.properties file.
+	 */
 
 	@Before
 	public void setUp() {
@@ -50,6 +53,11 @@ public class SetupAndTearDown extends BaseTest{
 
 	
 	
+	
+	/*
+	 *  Teardown method to close the browser after test is executed.
+	 */
+		
 	@After
 	public void tearDown() {
 		base.driver.close();

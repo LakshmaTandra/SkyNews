@@ -30,19 +30,14 @@ public class SkyNewsHomePage extends BaseTest{
 	public SkyNewsHomePage(BaseTest base) {
 		this.base = base;
 	}
-	
 
-	@Given("I open the browser")
-	public void i_open_the_browser()  {
-	   System.out.println("Openning Browser");
- 	   base.driver.manage().window().maximize();
-	   
-	}
-
-	@When("I navigate to SkyNews homepage")
+	/*
+	 * method to navigate to sky news url and maximize the window.
+	 */
+	@Given("I navigate to SkyNews homepage")
 	public void i_navigate_to_sky_news_homepage() {
-		System.out.println("Navigate to SkyNews homePage");
 		try {
+			base.driver.manage().window().maximize();
 			base.driver.get(base.getProperty("url"));
 		} catch (IOException e) {
 				e.printStackTrace();
@@ -51,52 +46,70 @@ public class SkyNewsHomePage extends BaseTest{
 		    
 	}
 	
-	@And("I accept website cookies")
+	
+	/*
+	 * method to accept cookies on home page
+	 */
+	
+	@When("I accept website cookies")
 	public void i_accept_website_cookies() {
 		homePage.acceptCookiesandSwithToDefaultPage();
 	}
 	
 
+	/*
+	 * method to verify browser title
+	 */
 	@Then("Verify the browser title on home page")
 	public void verify_the_browser_title_on_home_page() {
-		System.out.println("Verify title of homepage.");
 		Assert.assertTrue("Home Page Title did not match", homePage.verifyHomePageTitle());
 	    
 	}
 
+	/*
+	 * method to verify all categories displayed on home page
+	 */
 	@Then("Verify All the categories on homepage are displayed")
 	public void verify_the_all_the_categories_on_homepage_are_displayed() {
-	    System.out.println("Verify All categories on home page.");
 	   Assert.assertTrue("All categories on home page did not match", homePage.verifyCategoriesDisplayedOnHomePage());
 	   
 	    
 	}
 
+	/*
+	 * method to verify is the default category selected is home.
+	 */
 	@Then("Verify default category selected is Home")
 	public void verify_default_category_selected_is_home() {
-		System.out.println("Verify default category selected on home page.");
 		Assert.assertTrue("Home category is not highlighted", homePage.isHomeCategoryHighLighted());
 	    
 	}
-
+	
+	/*
+	 * method to click on climate link to navigate to climate page
+	 */
 	@When("I click on Climate category")
 	public void i_click_on_climate_category() {
-	    System.out.println("Click on Climate category");
 	    homePage.navigateToClimatePage(); 
 	    
 	}
 
+	
+	/*
+	 * method to verify if climate category is highlighted
+	 */
 	@Then("Verify Climate  category is highlighted")
 	public void verify_climate_category_is_highlighted() {
-		System.out.println("Verify climate is highlighted");
 		climatePage = new ClimatePage(base.driver);		
 		Assert.assertTrue(climatePage.isClimateCategoryHighLighted());
 	   
 	}
 
+	/*
+	 * method to click on first story on home page. This also captures the THIRD  word present on the story link.
+	 */
 	@And("I click on any of the story on home page")
 	public void i_click_on_any_of_the_story_on_home_page() {
-		System.out.println("Click on a story");		
 		storyWord = homePage.getWordFromStory(2);
 		System.out.println(storyWord);
 		homePage.clickOnStoryLink();
@@ -104,9 +117,11 @@ public class SkyNewsHomePage extends BaseTest{
 	    
 	}
 
+	/*
+	 * method to verify if the word captured in the above method is present in the story title page.
+	 */
 	@Then("Verify the title on the page matches the selected story on home page")
 	public void verify_the_title_on_the_page_matches_the_selected_story_on_home_page() {
-		System.out.println("Verify title of the page.");
 		storyPage = new StoryPage(base.driver);	
 		System.out.println(storyPage.verifyStoryPageTitleContainsAWord(storyWord));
 		Assert.assertTrue(storyPage.verifyStoryPageTitleContainsAWord(storyWord));

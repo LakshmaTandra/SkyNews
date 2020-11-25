@@ -11,6 +11,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
+/**
+ * class to interact with page
+ * @author Lakshma
+ *
+ * This class has web elements of Home page which are used by SkyNewsHomepage
+ */
+
 
 public class HomePage extends PageBase {
 	
@@ -35,6 +42,12 @@ public class HomePage extends PageBase {
 	
 	By _storyLink = By.xpath("//a[@class='sdc-site-tile__headline-link']");
 	
+	
+	
+	/*
+	 * Method to accept cookies on homepage
+	 */
+	
 	public void acceptCookiesandSwithToDefaultPage() {
 		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("sp_message_iframe_368417"));
 		wait.until(ExpectedConditions.elementToBeClickable(_acceptCookiesCTA)).click();
@@ -42,11 +55,19 @@ public class HomePage extends PageBase {
 		
 	}
 	
+	/*
+	 * Method to verify Sky news home page title
+	 */
+	
 	public Boolean verifyHomePageTitle() {
 		String actualTitle = driver.getTitle();
 		return actualTitle.equals(expectedHomePageTitle);
 	}
 	
+	
+	/*
+	 * Method to verify categories displayed on home page
+	 */
 	
 	public Boolean verifyCategoriesDisplayedOnHomePage() {
 		Boolean categoryFlag = true ;
@@ -73,6 +94,9 @@ public class HomePage extends PageBase {
 	}
 	
 	
+	/*
+	 * Method returns a Boolean value if the home category field is highlighted on home page.
+	 */
 	
 	public Boolean isHomeCategoryHighLighted() {
 		
@@ -80,17 +104,29 @@ public class HomePage extends PageBase {
 	
 	}
 	
+	/*
+	 * Method to navigate to climate page.
+	 */
+	
 	
 	public void navigateToClimatePage() {
 	 wait.until(ExpectedConditions.visibilityOf(driver.findElement(_climateCategoryLink)));	
 	 driver.findElement(_climateCategoryLink).click();
 	}
 	
+	/*
+	 * Method returns the word present in the story at index i passed as parameter.
+	 */
 	
 	public String getWordFromStory(int i) {
 	 String[] Title = driver.findElement(_storyTitle).getText().split(" ");
 		return Title[i];
 	}
+	
+	
+	/*
+	 * Method to click on the story link. This method clicks on the first story link present on home page.
+	 */
 	
 	public void clickOnStoryLink() {
 		driver.findElement(_storyLink).click();

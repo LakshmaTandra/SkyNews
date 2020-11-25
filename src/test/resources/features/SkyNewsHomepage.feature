@@ -1,9 +1,8 @@
-Feature: Of the SkyNews.com homepage, using a full screen desktop view.
+Feature: SkyNews.com hompage page categories and story links.
 
 Background:
-Given I open the browser 
-When I navigate to SkyNews homepage
-And I accept website cookies
+Given I navigate to SkyNews homepage
+When I accept website cookies
 
 @Regression
 Scenario: Verify the browser tab’s title on SkyNews.com
