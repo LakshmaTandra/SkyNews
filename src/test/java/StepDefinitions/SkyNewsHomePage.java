@@ -15,6 +15,12 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 
+/**
+ * class to interact with page
+ * @author Lakshma
+ *
+ * This class defines  step definitions
+ */
 
 public class SkyNewsHomePage extends BaseTest{
 

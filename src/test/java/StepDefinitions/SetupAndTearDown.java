@@ -1,6 +1,8 @@
 package StepDefinitions;
 
 
+import java.io.IOException;
+
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -8,6 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import TestBase.BaseTest;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class SetupAndTearDown extends BaseTest{
@@ -59,10 +62,15 @@ public class SetupAndTearDown extends BaseTest{
 	 */
 		
 	@After
-	public void tearDown() {
+	public void tearDown(Scenario s) throws IOException {
+		if (s.isFailed()) {
+			base.captureScreenshot(s.getName());
+			
+		}
 		base.driver.close();
 		
 	}
+	
 	
 	
 }
